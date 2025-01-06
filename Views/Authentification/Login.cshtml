@@ -1,0 +1,36 @@
+@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Connexion";
+}
+
+<h2 class="text-xl font-semibold mb-4">Connexion</h2>
+
+<form method="post" asp-action="Login" class="space-y-6">
+    <!-- Login -->
+    <div>
+        <label for="Login" class="block text-sm font-medium text-gray-700">Login</label>
+        <input asp-for="Login" id="Login"
+               class="mt-1 p-2 border border-gray-300 rounded-md w-full" />
+        <span asp-validation-for="Login" class="text-red-500 text-sm"></span>
+    </div>
+
+    <!-- Password -->
+    <div>
+        <label for="Password" class="block text-sm font-medium text-gray-700">Mot de passe</label>
+        <input asp-for="Password" id="Password" 
+               class="mt-1 p-2 border border-gray-300 rounded-md w-full" />
+        <span asp-validation-for="Password" class="text-red-500 text-sm"></span>
+    </div>
+
+    <!-- Bouton de connexion -->
+    <div class="text-right">
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+            Connexion
+        </button>
+    </div>
+</form>
+
+@* @section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+} *@

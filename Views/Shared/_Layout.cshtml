@@ -5,45 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ProjetCsharpWebS5</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/app.css" asp-append-version="true" />
+    <link
+        href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+        rel="stylesheet"
+    />
     <link rel="stylesheet" href="~/ProjetCsharpWebS5.styles.css" asp-append-version="true" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ProjetCsharpWebS5</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+<body class="overflow-hidden">
+    <div class="flex w-[100%]">
+        <!-- Barre de navigation verticale -->
+        <div class="w-[15%] bg-blue-800 h-screen text-white text-xl">
+            <div class="p-6">
+                <h1 class="text-5xl font-semibold">NSA</h1>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+            <ul class="mt-8 space-y-4">
+                <li>
+                    <a class="flex items-center px-6 py-3 hover:bg-blue-600 hover:text-white" asp-controller="Home" asp-action="Index" >
+                        <span class="material-icons mr-4"><i class="ri-dashboard-2-line"></i></span>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a class="flex items-center px-6 py-3 hover:bg-blue-600 hover:text-white" asp-controller="Client" asp-action="Index" >
+                        <span class="material-icons mr-4"><i class="ri-user-fill"></i></span>
+                        Clients
+                    </a>
+                </li>
+                <li>
+                    <a class="flex items-center px-6 py-3 hover:bg-blue-600 hover:text-white" asp-controller="Commande" asp-action="Index" >
+                        <span class="material-icons mr-4"><i class="ri-shopping-cart-fill"></i></span>
+                        Commandes
+                    </a>
+                </li>
+                <li>
+                    <a class="flex items-center px-6 py-3 hover:bg-blue-600 hover:text-white" asp-controller="Produit" asp-action="Index" >
+                        <span class="material-icons mr-4"><i class="ri-price-tag-3-fill"></i></span>
+                        Produits
+                    </a>
+                </li>
+                <li>
+                    <a class="flex items-center px-6 py-3 hover:bg-blue-600 hover:text-white" asp-controller="Livreur" asp-action="Index" >
+                        <span class="material-icons mr-4"><i class="ri-truck-fill"></i></span>
+                        Livreurs
+                    </a>
+                </li>
+                <li>
+                    <a class="flex items-center px-6 py-3 hover:bg-blue-600 hover:text-white" asp-controller="User" asp-action="Index" >
+                        <span class="material-icons mr-4"><i class="ri-user-fill"></i></span>
+                        Utilisateurs
+                    </a>
+                </li>
+            </ul>
+        </div>
 
-    <footer class="border-top footer text-muted">
+        <div class="container flex justify-center items-center w-[80%] h-screen">
+            <main role="main" class="min-h-[75%] w-[100%]">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+    
+
+    @* <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - ProjetCsharpWebS5 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2024 - ProjetCsharpWebS5 - <a asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    @await RenderSectionAsync("Scripts", required: false) *@
 </body>
 </html>

@@ -1,0 +1,102 @@
+@using ProjetCsharpWebS5.Dtos
+@model CommandeCreateDto
+
+<div class="grid grid-cols-2 gap-4 p-4">
+  <!-- Liste des articles disponibles -->
+  <div class="border p-4">
+    <h2 class="text-lg font-bold mb-4">Liste des produits</h2>
+    <input type="text" placeholder="Rechercher..." class="border w-full p-2 mb-4" />
+
+    <table class="w-full border">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="border px-4 py-2 text-center">Libelle</th>
+          <th class="border px-4 py-2 text-center">Prix</th>
+          <th class="border px-4 py-2 text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var produit in Model.Produits.Items)
+        {
+          <tr>
+            <td class="border px-4 py-2 text-center">@produit.Libelle</td>
+            <td class="border px-4 py-2 text-center">@produit.Prix</td>
+            <td class="border px-4 py-2 text-center">
+              <button type="button" class="bg-blue-500 text-white px-2 py-1 rounded"
+                      onclick="ajouterProduit(@produit.Id)">Ajouter</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+    @await Html.PartialAsync("_Pagination", Model.Produits.Pagination)
+  </div>
+
+  <!-- Liste des produits sélectionnés -->
+  <div class="border p-4">
+    <h2 class="text-lg font-bold mb-4">Liste des produits sélectionnés</h2>
+
+    <form asp-action="Create" method="post">
+      <table class="w-full border">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="border px-4 py-2 text-center">Libelle</th>
+            <th class="border px-4 py-2 text-center">Prix</th>
+            <th class="border px-4 py-2 text-center">Quantité prise</th>
+            <th class="border px-4 py-2 text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody id="produits-selectionnes">
+          <!-- Les détails seront ajoutés ici via JavaScript -->
+        </tbody>
+      </table>
+
+      <div class="mt-4">
+        <button type="submit" class="bg-green-500 text-white px-4 py-2 text-center rounded">Créer la commande</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  const produitsSelectionnes = [];
+
+  function ajouterProduit(id) {
+    const produit = @Html.Raw(Json.Serialize(Model.Produits.Items));
+    const selectedProduct = produit.find(p => p.id === id);
+    if (!produitsSelectionnes.some(p => p.id === id)) {
+      produitsSelectionnes.push(selectedProduct);
+      updateSelection();
+    }
+  }
+
+  function supprimerProduit(id) {
+    const index = produitsSelectionnes.findIndex(p => p.id === id);
+    if (index !== -1) {
+      produitsSelectionnes.splice(index, 1);
+      updateSelection();
+    }
+  }
+
+  function updateSelection() {
+    const tbody = document.getElementById('produits-selectionnes');
+    tbody.innerHTML = '';
+
+    produitsSelectionnes.forEach(produit => {
+      const row = `
+        <tr>
+          <td class="border px-4 py-2 text-center">${produit.libelle}</td>
+          <td class="border px-4 py-2 text-center">
+            <input asp-for="Details[${produit.id}].Prix" class="border w-full" value="${produit.prix}">
+          </td>
+          <td class="border px-4 py-2 text-center">
+            <input type="number" asp-for="Details[${produit.id}].Qte" class="border w-full" value="1">
+          </td>
+          <td class="border px-4 py-2 text-center">
+            <button type="button" class="bg-red-500 text-white px-2 py-1 rounded" onclick="supprimerProduit(${produit.id})">Supprimer</button>
+          </td>
+        </tr>`;
+      tbody.innerHTML += row;
+    });
+  }
+</script>

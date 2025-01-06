@@ -1,0 +1,43 @@
+@model User
+
+<div class="max-w-lg mx-auto p-6 bg-white shadow rounded-lg">
+    <h2 class="text-2xl font-bold mb-6">Créer un Nouvel utilisateur</h2>
+    <form asp-action="Create" method="post" class="space-y-4">
+        <!-- Login -->
+        <div>
+            <label for="Login" class="block text-sm font-medium text-gray-700">Login</label>
+            <input type="text" id="Login" asp-for="Login"
+                   class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+            <span asp-validation-for="Login" class="text-sm text-red-500"></span>
+        </div>
+
+        <!-- Mot de passe -->
+        <div>
+            <label for="Password" class="block text-sm font-medium text-gray-700">Mot de passe</label>
+            <input id="Password" asp-for="Password"
+                   class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+            <span asp-validation-for="Password" class="text-sm text-red-500"></span>
+        </div>
+
+        <!-- Sélection du rôle -->
+        <div>
+            <label for="Role" class="block text-sm font-medium text-gray-700">Rôle</label>
+            <select id="Role" asp-for="Role"
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                <option value="Client">Client</option>
+                <option value="RespStock">Resposable de stock</option>
+                <option value="Secretaire">Secretaire</option>
+                <option value="Comptable">Comptable</option>
+            </select>
+            <span asp-validation-for="Role" class="text-sm text-red-500"></span>
+        </div>
+
+        <!-- Bouton soumettre -->
+        <div class="flex justify-end">
+            <button type="submit"
+                    class="px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700">
+                Enregistrer
+            </button>
+        </div>
+    </form>
+</div>

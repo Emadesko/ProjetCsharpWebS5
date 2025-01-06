@@ -1,0 +1,18 @@
+@model Client
+<div class="flex justify-between items-center mb-6">
+    <h2 class="text-4xl font-semibold text-gray-800 mb-4">Informations du client</h2>
+    <a asp-controller="Commande" asp-action="Create" asp-route-clientId="@Model.Id"
+       class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 text-lg">
+      <i class="ri-shopping-basket-fill"></i> Nouvelle Commande
+    </a>
+  </div>
+  <section class="mb-8 bg-blue-300 shadow-md rounded-lg p-6 text-lg">
+    <div class="grid grid-cols-2 gap-4 text-gray-700">
+      <p><span class="font-bold">Nom :</span> @Model.Nom </p>
+      <p><span class="font-bold">Prénom :</span> @Model.Prenom</p>
+      <p><span class="font-bold">Adresse :</span> @Model.Adresse</p>
+      <p><span class="font-bold">Téléphone :</span> @Model.Telephone </p>
+      <p><span class="font-bold">Solde :</span> @Model.Solde CFA</p>
+      <p><span class="font-bold">Login :</span> @Model.User.Login</p>
+    </div>
+  </section>

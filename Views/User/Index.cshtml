@@ -1,0 +1,50 @@
+﻿@using ProjetCsharpWebS5.Core.Pagination
+@model PaginationModel<User>
+@{
+    ViewData["Title"] = "Utilisateurs";
+}
+  @if (TempData["Message"] != null){
+    <div class="text-green-500 text-center p-4 rounded-md">
+        @TempData["Message"]
+    </div>
+  }
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-4xl font-bold text-gray-800">Liste des utilisateurs</h1>
+    <a asp-action="Create"
+       class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 text-lg">
+      <i class="ri-user-add-fill"></i> Nouvel utilisateur
+    </a>
+  </div>
+
+  @if (Model.Items.Any())
+  {
+
+    <!-- Tableau des clients -->
+    <div class="overflow-x-auto bg-white rounded-lg shadow-md text-lg">
+      <table class="min-w-full border-collapse border border-gray-200">
+        <thead class="bg-blue-300">
+          <tr class="h-16">
+            <th class="border border-gray-200 px-4 py-2 text-left font-medium text-gray-600">Login</th>
+            <th class="border border-gray-200 px-4 py-2 text-left font-medium text-gray-600">Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (var user in Model.Items)
+          {
+            <tr class="border-b hover:bg-gray-50 h-14">
+              <td class="border border-gray-200 px-4 py-2 text-gray-800">@user.Login</td>
+              <td class="border border-gray-200 px-4 py-2 text-gray-800">@user.Role</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+      @await Html.PartialAsync("_Pagination", Model.Pagination)
+    </div>
+  }
+  else
+  {
+    <div class="flex justify-center items-center mb-6 border-y-4 border-blue-300 h-32 mt-16 ">
+      <h1 class="text-2xl font-bold text-gray-800">Aucun client</h1>
+    </div>
+  }
+

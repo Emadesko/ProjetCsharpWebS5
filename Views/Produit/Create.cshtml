@@ -1,0 +1,46 @@
+@model Produit
+
+<div class="max-w-lg mx-auto p-6 bg-white shadow rounded-lg">
+    <h2 class="text-2xl font-bold mb-6">Créer un nouveau produit</h2>
+    <form asp-action="Create" method="post" class="space-y-4">
+        <!-- Libelle -->
+        <div>
+            <label for="Libelle" class="block text-sm font-medium text-gray-700">Libelle</label>
+            <input id="Libelle" asp-for="Libelle"
+                   class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+            <span asp-validation-for="Libelle" class="text-sm text-red-500"></span>
+        </div>
+
+        <!-- PréLibelle -->
+        <div>
+            <label for="Prix" class="block text-sm font-medium text-gray-700">Prix</label>
+            <input id="Prix" asp-for="Prix"
+                   class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+            <span asp-validation-for="Prix" class="text-sm text-red-500"></span>
+        </div>
+
+        <!-- QteStock -->
+        <div>
+            <label for="QteStock" class="block text-sm font-medium text-gray-700">Quantité en stock</label>
+            <input id="QteStock" asp-for="QteStock"
+                   class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+            <span asp-validation-for="QteStock" class="text-sm text-red-500"></span>
+        </div>
+
+        <!-- QteCeuil -->
+        <div>
+            <label for="QteCeuil" class="block text-sm font-medium text-gray-700">Quantité ceuille</label>
+            <input id="QteCeuil" asp-for="QteCeuil" value="5"
+                   class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+            <span asp-validation-for="QteCeuil" class="text-sm text-red-500"></span>
+        </div>
+
+        <!-- Bouton soumettre -->
+        <div class="flex justify-end">
+            <button type="submit"
+                    class="px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700">
+                Enregistrer
+            </button>
+        </div>
+    </form>
+</div>

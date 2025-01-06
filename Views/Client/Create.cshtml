@@ -1,0 +1,85 @@
+@model Client
+
+<div class="max-w-lg mx-auto p-6 bg-white shadow rounded-lg">
+    <h2 class="text-2xl font-bold mb-6">Créer un nouveau client</h2>
+    <form asp-action="Create" method="post" class="space-y-4">
+        <!-- Nom -->
+        <div>
+            <label for="Nom" class="block text-sm font-medium text-gray-700">Nom</label>
+            <input type="text" id="Nom" asp-for="Nom"
+                   class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+            <span asp-validation-for="Nom" class="text-sm text-red-500"></span>
+        </div>
+
+        <!-- Prénom -->
+        <div>
+            <label for="Prenom" class="block text-sm font-medium text-gray-700">Prénom</label>
+            <input type="text" id="Prenom" asp-for="Prenom"
+                   class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+            <span asp-validation-for="Prenom" class="text-sm text-red-500"></span>
+        </div>
+
+        <!-- Adresse -->
+        <div>
+            <label for="Adresse" class="block text-sm font-medium text-gray-700">Adresse</label>
+            <input type="text" id="Adresse" asp-for="Adresse"
+                   class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+            <span asp-validation-for="Adresse" class="text-sm text-red-500"></span>
+        </div>
+
+        <!-- Téléphone -->
+        <div>
+            <label for="Telephone" class="block text-sm font-medium text-gray-700">Téléphone</label>
+            <input type="text" id="Telephone" asp-for="Telephone"
+                   class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+            <span asp-validation-for="Telephone" class="text-sm text-red-500"></span>
+        </div>
+
+        <!-- Solde -->
+        @* <div class="hidden">
+            <label for="Solde" class="block text-sm font-medium text-gray-700">Solde</label>
+            <input id="Solde" asp-for="Solde"
+                   class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+            <span asp-validation-for="Solde" class="text-sm text-red-500"></span>
+        </div> *@
+
+        <!-- Login -->
+        <div>
+            <label for="Login" class="block text-sm font-medium text-gray-700">Login</label>
+            <input type="text" id="Login" asp-for="User.Login"
+                   class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+            <span asp-validation-for="User.Login" class="text-sm text-red-500"></span>
+        </div>
+
+        <!-- Mot de passe -->
+        <div>
+            <label for="Password" class="block text-sm font-medium text-gray-700">Mot de passe</label>
+            <input id="Password" asp-for="User.Password"
+                   class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+            <span asp-validation-for="User.Password" class="text-sm text-red-500"></span>
+        </div>
+
+        <!-- Sélection du rôle -->
+        <div class="hidden">
+            <label for="Role" class="block text-sm font-medium text-gray-700">Rôle</label>
+            <input type="text" value="Client" id="Password" asp-for="User.Role"
+                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+            @* <select id="Role" asp-for="User.Role"
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                <option value="Rs">Resposable de stock</option>
+                <option value="Client">Client</option>
+                <option value="Secretaire">Secretaire</option>
+                <option value="Compteble">Comptable</option>
+            </select> *@
+            <span asp-validation-for="User.Role" class="text-sm text-red-500"></span>
+        </div>
+
+        <!-- Bouton soumettre -->
+        <div class="flex justify-end">
+            <button type="submit"
+                    class="px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700">
+                Enregistrer
+            </button>
+        </div>
+    </form>
+</div>
